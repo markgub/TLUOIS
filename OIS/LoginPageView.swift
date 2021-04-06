@@ -21,47 +21,9 @@ struct LoginPageView: View {
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
     
-    func tryLogin() {
-        let myURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=9A46066693F9020547B19035E345EAEE&p_type=ois&p_user=\(username)&p_pwd=\(password)&p_mobiil=big&p_mobiil_tel="
-        
-        guard let myURL = URL(string: myURLString) else { return }
-            
-        do {
-            let myHTMLString = try! String(contentsOf: myURL, encoding: .utf8)
-            let htmlContent = myHTMLString
-            do {
-                let doc: Document = try SwiftSoup.parse(htmlContent)
-                do {
-                    let htmlParsed = try doc.select("input").first()!
-                    
-                    let authSuccText = try! htmlParsed.attr("name")
-                    
-                    //print (authSuccText as Any)
-                    
-                    if (authSuccText == "p_kasutaja_tk_str_id") {
-                        if (authenticationDidFail == true){
-                            authenticationDidFail = false
-                        }
-                        authenticationDidSucceed = true
-                    }
-                    else {
-                        if (authenticationDidSucceed == true){
-                            authenticationDidSucceed = false
-                        }
-                        authenticationDidFail = true
-                    }
-                }
-            }
-            //print(myHTMLString)
-        } catch let error {
-            print("Error: \(error)")
-        }
-        
-    }
-    
     var body: some View {
-        
-        ZStack{
+        NavigationView {
+            ZStack{
             VStack{
                 Logo()
                 HelloText()
@@ -74,10 +36,21 @@ struct LoginPageView: View {
                         .foregroundColor(darkRedColor)
                 }
                 
-                Button(action: { self.tryLogin()}) {
+                /*NavigationLink(destination: MainPageView(), isActive: $authenticationDidSucceed) {
+                                    Button(action: {
+                                        RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()
+                                        RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
+                                    }) {
+                                        LoginButtonContent()
+                                    }
+                                }*/
+                Button(action: {
+                    /*RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()*/
+                    RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
+                }) {
                     LoginButtonContent()
                 }
-                
+                }
             }
             .padding()
             if authenticationDidSucceed{

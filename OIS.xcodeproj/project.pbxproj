@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		868D2E1725FFD78700DFF956 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868D2E1625FFD78700DFF956 /* ContentView.swift */; };
+		86E38C3126014E1B00F58C18 /* RequestsFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E38C3026014E1B00F58C18 /* RequestsFunc.swift */; };
 		8B75C7FB25FEC79200DC6D3B /* LessonsShortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75C7FA25FEC79200DC6D3B /* LessonsShortView.swift */; };
 		8B75C80025FECBA600DC6D3B /* LatestGradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75C7FF25FECBA600DC6D3B /* LatestGradesView.swift */; };
 		8BF1D4C825FEB6DF003A4724 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1D4C725FEB6DF003A4724 /* MainPageView.swift */; };
@@ -40,6 +42,9 @@
 		09610F391144B1EC48338663 /* Pods-OIS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OIS.release.xcconfig"; path = "Target Support Files/Pods-OIS/Pods-OIS.release.xcconfig"; sourceTree = "<group>"; };
 		10FB61CACEEC528758151B99 /* Pods-OIS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OIS.debug.xcconfig"; path = "Target Support Files/Pods-OIS/Pods-OIS.debug.xcconfig"; sourceTree = "<group>"; };
 		1F0C34177D89E5A022F776A9 /* Pods_OIS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OIS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		865AB4002611E80800DEFB81 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		868D2E1625FFD78700DFF956 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		86E38C3026014E1B00F58C18 /* RequestsFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFunc.swift; sourceTree = "<group>"; };
 		8B75C7FA25FEC79200DC6D3B /* LessonsShortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsShortView.swift; sourceTree = "<group>"; };
 		8B75C7FF25FECBA600DC6D3B /* LatestGradesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestGradesView.swift; sourceTree = "<group>"; };
 		8BF1D4C725FEB6DF003A4724 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
@@ -117,8 +122,11 @@
 		8BFEAD0A25FE4F0500C364E0 /* OIS */ = {
 			isa = PBXGroup;
 			children = (
+				865AB4002611E80800DEFB81 /* MyPlayground.playground */,
 				8BFEAD0B25FE4F0500C364E0 /* OISApp.swift */,
+				868D2E1625FFD78700DFF956 /* ContentView.swift */,
 				8BFEAD0D25FE4F0500C364E0 /* LoginPageView.swift */,
+				86E38C3026014E1B00F58C18 /* RequestsFunc.swift */,
 				8BF1D4C725FEB6DF003A4724 /* MainPageView.swift */,
 				8B75C7FA25FEC79200DC6D3B /* LessonsShortView.swift */,
 				8B75C7FF25FECBA600DC6D3B /* LatestGradesView.swift */,
@@ -337,6 +345,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BFEAD0E25FE4F0500C364E0 /* LoginPageView.swift in Sources */,
+				868D2E1725FFD78700DFF956 /* ContentView.swift in Sources */,
+				86E38C3126014E1B00F58C18 /* RequestsFunc.swift in Sources */,
 				8BFEAD0C25FE4F0500C364E0 /* OISApp.swift in Sources */,
 				8BF1D4C825FEB6DF003A4724 /* MainPageView.swift in Sources */,
 				8B75C80025FECBA600DC6D3B /* LatestGradesView.swift in Sources */,
