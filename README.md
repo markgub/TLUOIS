@@ -11,12 +11,19 @@ Eesmärk ja lühikirjeldus:
  <img src="https://cdn.discordapp.com/attachments/813108684028510208/820782978610233424/image0.png" width="250" height="535">  <img src="https://cdn.discordapp.com/attachments/813108684028510208/820804846814756904/image1.png" width="250" height="535" |
 </p>
 
+### Projekti panustajad
+- Mark-Kirill Gubal
+- Vladislav Priske
+- Jevgeni Prostsenko
+- Maksim Sitkin
+- Alek-Jaan Tšern
+
 Litsents
 ----
 
 MIT License
 
-Copyright (c) 2021 Vladislav Priske
+Copyright (c) 2021 Mark-Kirill Gubal, Vladislav Priske, Jevgeni Prostsenko, Maksim Sitkin, Alek-Jaan Tšern
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
