@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftSoup
 import WebKit
 
+
 struct RequestsFunc {
     
     @Binding var username: String
@@ -17,6 +18,8 @@ struct RequestsFunc {
     
     @Binding var authenticationDidFail: Bool
     @Binding var authenticationDidSucceed: Bool
+    
+    @State var tunnid: [String] = []
     
     func tryLogin() {
         let loginURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=9A46066693F9020547B19035E345EAEE&p_type=ois&p_user=\(username)&p_pwd=\(password)&p_mobiil=big&p_mobiil_tel="
@@ -71,7 +74,7 @@ struct RequestsFunc {
                 let docTunnip: Document = try SwiftSoup.parseBodyFragment(tunnipHTMLString)
                 do {
                     let tunnidElem = try! docTunnip.getElementsByClass("large_link2")
-                    var tunnid: [String] = []
+                    //var tunnid: [String] = []
                     let ryhmadElem = try! docTunnip.getElementsByTag("span")
                     var ryhmad: [String] = []
                     let klassElem = try docTunnip.select("div > div > div + div + div + div")
@@ -117,6 +120,8 @@ struct RequestsFunc {
                     print (ainekood)
                     print (oppejoud)
                     print (kellAine)
+                    
+                    return tunnid, ryhmad, klass, ainekood, oppejoud, kellAine
                 }
         } catch let error {
             print("Error: \(error)")

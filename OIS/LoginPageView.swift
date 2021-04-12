@@ -36,20 +36,20 @@ struct LoginPageView: View {
                         .foregroundColor(darkRedColor)
                 }
                 
-                /*NavigationLink(destination: MainPageView(), isActive: $authenticationDidSucceed) {
+                NavigationLink(destination: MainPageView(), isActive: $authenticationDidSucceed) {
                                     Button(action: {
                                         RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()
                                         RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
                                     }) {
                                         LoginButtonContent()
                                     }
-                                }*/
-                Button(action: {
+                                }
+                /*Button(action: {
                     /*RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()*/
                     RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
                 }) {
                     LoginButtonContent()
-                }
+                }*/
                 }
             }
             .padding()

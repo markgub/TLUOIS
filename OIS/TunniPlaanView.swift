@@ -1,20 +1,22 @@
 //
-//  LatestGradesView.swift
+//  TunniPlaanView.swift
 //  OIS
 //
-//  Created by root user on 15.03.2021.
+//  Created by Vladislav on 12.04.2021.
 //
 
 import SwiftUI
 
-struct Course: Identifiable {
+struct TunniPlaan: Identifiable {
     var id = UUID()
     var name: String
     var teacher: String
-    var grade: String
+    var time: String
+    var place: String
+    var nameCode: String
 }
 
-struct CourseRow: View {
+struct TunniPlaanRow: View {
     
     let darkRedColor = Color(red: 0.72, green: 0.07, blue: 0.20)
 
@@ -35,12 +37,9 @@ struct CourseRow: View {
 }
 
 
-struct LatestGradesView: View {
-    
-    @Binding var tunnid: String
-    
+struct TunniPlaanView: View {
     let latestgrades = [
-        Course(name: "\(tunnid[0])", teacher: "Tanel Õunapuu", grade: "A"),
+        Course(name: "Intellektuaalne omand ja andmekaitse", teacher: "Tanel Õunapuu", grade: "A"),
         Course(name: "Arvutigraafika", teacher: "Mati Mõttus    ", grade: "B"),
         Course(name: "Rakenduste programmeerimine", teacher: "Romil Rõbtšenkov", grade: "A"),
         Course(name: "Teoreetiline informaatika", teacher: "Peeter Normak    ", grade: "C"),
@@ -49,7 +48,7 @@ struct LatestGradesView: View {
     
     var body: some View {
         List {
-            Section(header: LatestGradesListHeader(), footer: LatestGradesListFooter()) {
+            Section(header: TunniplaanHeader(), footer: TunniplaanFooter()) {
                 ForEach(latestgrades) { course in
                     CourseRow(course: course)
                 }
@@ -58,24 +57,23 @@ struct LatestGradesView: View {
     }
 }
 
-struct LatestGradesListHeader: View {
+struct TunniplaanHeader: View {
     var body: some View {
         HStack {
-            Image(systemName: "star")
-            Text("Viimati saadud hinded ja arvestused")
+            //Image(systemName: "star")
+            Text("Täna on ")
         }
     }
 }
 
-struct LatestGradesListFooter: View {
+struct TunniplaanFooter: View {
     var body: some View {
-        Text("Keskmine kaalutud hinne: 4.5")
+        Text("Täna on ")
     }
 }
 
-
-struct LatestGradesView_Previews: PreviewProvider {
+struct TunniPlaanView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestGradesView()
+        TunniPlaanView()
     }
 }
