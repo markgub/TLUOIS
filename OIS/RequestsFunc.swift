@@ -76,9 +76,10 @@ struct RequestsFunc {
                     var ryhmad: [String] = []
                     let klassElem = try docTunnip.select("div > div > div + div + div + div")
                     var klass: [String] = []
-                    let aineKoodaineOppejoudElem = try docTunnip.select("div > div > div + div")
+                    let aineKoodaineOppejoudElem = try docTunnip.select("div > div > div")
                     var oppejoud: [String] = []
                     var ainekood: [String] = []
+                    var kellAine: [String] = []
 
                     for element in tunnidElem{
                         tunnid.append(try! element.text())
@@ -96,12 +97,15 @@ struct RequestsFunc {
                     for element in aineKoodaineOppejoudElem{
                         countInDiv2 += 1
                         if (countInDiv2==1){
-                            ainekood.append(try! element.text())
+                            kellAine.append(try! element.text())
                         }
                         if (countInDiv2==2){
+                            ainekood.append(try! element.text())
+                        }
+                        if (countInDiv2==3){
                             oppejoud.append(try! element.text())
                         }
-                        if (countInDiv2 >= 3){
+                        if (countInDiv2 >= 4){
                             countInDiv2 = 0
                         }
                         
@@ -112,6 +116,7 @@ struct RequestsFunc {
                     print (klass)
                     print (ainekood)
                     print (oppejoud)
+                    print (kellAine)
                 }
         } catch let error {
             print("Error: \(error)")
