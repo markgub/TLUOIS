@@ -64,47 +64,54 @@ struct RequestsFunc {
         tryLogin()
         let tunnipURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=21D02BFC64FA0CCC52A388D2A2990C7D90419DA7F185EAC00AA85210028D3067&d=1&p_sess=x&p_rnd=1615160982141"
         guard let tunnipURL = URL(string: tunnipURLString) else { return }
-            
         do {
             let tunnipHTMLString = try! String(contentsOf: tunnipURL, encoding: .utf8)
             //let loginHTMLContent = loginHTMLString
             do {
                 let docTunnip: Document = try SwiftSoup.parseBodyFragment(tunnipHTMLString)
                 do {
-                    //let tunnipHTMLParsed = try docTunnip.getElementsByTag("div")
-                    //let ryhmad = try! docTunnip.getElementsByTag("span")
-                    //let tunnid = try! docTunnip.getElementsByClass("large_link2")
-                    //let opetajaNimi = try! docTunnip.getElementsByAttributeValueNot("div")
+                    let tunnidElem = try! docTunnip.getElementsByClass("large_link2")
+                    var tunnid: [String] = []
+                    let ryhmadElem = try! docTunnip.getElementsByTag("span")
+                    var ryhmad: [String] = []
+                    let klassElem = try docTunnip.select("div > div > div + div + div + div")
+                    var klass: [String] = []
+                    let aineKoodaineOppejoudElem = try docTunnip.select("div > div > div + div")
+                    var oppejoud: [String] = []
+                    var ainekood: [String] = []
 
-                    /*for element in tunnid{
-                        print (try! element.text())
+                    for element in tunnidElem{
+                        tunnid.append(try! element.text())
                     }
-                    print (try! tunnid[0].text())
-                    print ("lol")
-                    for element in ryhmad{
-                        print (try! element.text())
-                    }
-                    print ("lol")*/
                     
-                    //for element in opetajaNimi{
-                        //print (element)
-                    //}
+                    for element in ryhmadElem{
+                        ryhmad.append(try! element.text())
+                    }
                     
-                    //let docTunnip2: Document = try! SwiftSoup.parse(tunnipHTMLString)
-                    let opetajaNimi = try docTunnip.children()
-                    let opetajaNimi2 = try docTunnip.select("[height=72]")
-                    for element in opetajaNimi2{
-                        print (try element.text())
+                    for element in klassElem{
+                        klass.append(try! element.text())
                     }
-                    print(opetajaNimi2)
-                    print("lol")
-
-                    print("lol")
-                    for element in opetajaNimi{
-                        print (element)
+                    
+                    var countInDiv2 = 0
+                    for element in aineKoodaineOppejoudElem{
+                        countInDiv2 += 1
+                        if (countInDiv2==1){
+                            ainekood.append(try! element.text())
+                        }
+                        if (countInDiv2==2){
+                            oppejoud.append(try! element.text())
+                        }
+                        if (countInDiv2 >= 3){
+                            countInDiv2 = 0
+                        }
+                        
                     }
-                    print (opetajaNimi as Any)
-
+                    
+                    print (tunnid)
+                    print (ryhmad)
+                    print (klass)
+                    print (ainekood)
+                    print (oppejoud)
                 }
         } catch let error {
             print("Error: \(error)")
