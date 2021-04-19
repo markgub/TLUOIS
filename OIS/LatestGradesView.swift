@@ -37,10 +37,10 @@ struct CourseRow: View {
 
 struct LatestGradesView: View {
     
-    @Binding var tunnid: String
+    //@Binding var tunnid: String
     
     let latestgrades = [
-        Course(name: "\(tunnid[0])", teacher: "Tanel Õunapuu", grade: "A"),
+        Course(name: "Mingi tund", teacher: "Tanel Õunapuu", grade: "A"),
         Course(name: "Arvutigraafika", teacher: "Mati Mõttus    ", grade: "B"),
         Course(name: "Rakenduste programmeerimine", teacher: "Romil Rõbtšenkov", grade: "A"),
         Course(name: "Teoreetiline informaatika", teacher: "Peeter Normak    ", grade: "C"),

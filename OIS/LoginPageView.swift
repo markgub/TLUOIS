@@ -15,12 +15,25 @@ let darkRedColor = Color(red: 0.72, green: 0.07, blue: 0.20)
 
 struct LoginPageView: View {
     
-    @State var username: String = ""
+    /*let persistenceController = PersistenceController.shared
+    ContentView()
+        .environment(\.managedObjectContext, persistenceController.container.viewContext)*/
+    
+    @State var username: String = UserDefaults.standard.string(forKey: "Username") ?? ""
     @State var password: String = ""
     
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
     
+    var test: [String] = ["Test"]
+    /*var everything: ([String], [String], [String], [String], [String], [String]) = (["Test"],["Tesst"],["T"],["fds"],["aaa"],["Pomogite"])*/
+    
+    @State var tunnid: [String] = []
+    @State var ryhmad: [String] = []
+    @State var klass: [String] = []
+    @State var oppejoud: [String] = []
+    @State var ainekood: [String] = []
+    @State var kellAine: [String] = []
     var body: some View {
         NavigationView {
             ZStack{
@@ -36,10 +49,11 @@ struct LoginPageView: View {
                         .foregroundColor(darkRedColor)
                 }
                 
-                NavigationLink(destination: MainPageView(), isActive: $authenticationDidSucceed) {
+                NavigationLink(destination: TunniPlaanView(tunnid: $tunnid, ryhmad: $ryhmad, klass: $klass, oppejoud: $oppejoud, ainekood: $ainekood, kellAine: $kellAine), isActive: $authenticationDidSucceed) {
                                     Button(action: {
                                         RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()
-                                        RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
+                                        (tunnid, ryhmad, klass, ainekood, oppejoud, kellAine) = RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
+                                        UserDefaults.standard.set(self.username, forKey: "Username")
                                     }) {
                                         LoginButtonContent()
                                     }

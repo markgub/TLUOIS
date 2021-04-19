@@ -42,7 +42,7 @@ struct MainPageView: View {
                 case 1:
                     NavigationView{
                         VStack{
-                            TunniPlaanView()
+                            //TunniPlaanView(a, b, c, d, e, f)
                         }
                             .navigationTitle("Minu tunniplaan")
                     }
