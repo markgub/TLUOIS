@@ -97,8 +97,6 @@ struct TunniPlaanView: View {
         ]
     }*/
     
-    
-    
     /*lazy var latestgrades: [Course] = [Course(name: tunnid[0], teacher: oppejoud[0], grade: "B")]*/
     
     func latestValue() -> [TunniPlaan]{
@@ -118,16 +116,17 @@ struct TunniPlaanView: View {
         if(!tunnid.isEmpty){
             List {
                 Section(header: TunniplaanHeader(), footer: TunniplaanFooter()) {
-                    if(tunnid.count == 0){
-                        Text("Tunnid puuduvad")
-                    } else {
-                        ForEach(latestValue()) { course in
-                            TunniPlaanRow(course: course)
-                        }
+                    ForEach(latestValue()) { course in
+                        TunniPlaanRow(course: course)
                     }
                 }
             }.listStyle(GroupedListStyle())
+        } else {
+            Text("Tunnid puuduvad")
         }
+        Button(action: {ExperimentFunc().testFunc()}, label: {
+            Text("Test")
+        })
     }
 }
 
