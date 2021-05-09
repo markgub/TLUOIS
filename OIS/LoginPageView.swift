@@ -49,7 +49,7 @@ struct LoginPageView: View {
                         .foregroundColor(darkRedColor)
                 }
                 
-                NavigationLink(destination: TunniPlaanView(tunnid: $tunnid, ryhmad: $ryhmad, klass: $klass, oppejoud: $oppejoud, ainekood: $ainekood, kellAine: $kellAine), isActive: $authenticationDidSucceed) {
+                NavigationLink(destination: MainPageView(/*tunnid: $tunnid, ryhmad: $ryhmad, klass: $klass, oppejoud: $oppejoud, ainekood: $ainekood, kellAine: $kellAine*/), isActive: $authenticationDidSucceed) {
                                     Button(action: {
                                         RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()
                                         (tunnid, ryhmad, klass, ainekood, oppejoud, kellAine) = RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
@@ -57,7 +57,7 @@ struct LoginPageView: View {
                                     }) {
                                         LoginButtonContent()
                                     }
-                                }
+                }
                 /*Button(action: {
                     /*RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()*/
                     RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()

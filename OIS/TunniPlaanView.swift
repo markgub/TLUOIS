@@ -61,43 +61,7 @@ struct TunniPlaanView: View {
     var kellAine: [String] = []*/
     
     
-    /*func fillTunnip(tunnidElem: Elements, ryhmadElem: Elements, klassElem: Elements, aineKoodaineOppejoudElem: Elements){
-        /*for element in tunnidElem{
-            self.tunnid.append(try! element.text())
-        }
-        
-        for element in ryhmadElem{
-            self.ryhmad.append(try! element.text())
-        }
-        
-        for element in klassElem{
-            self.klass.append(try! element.text())
-        }
-        
-        var countInDiv2 = 0
-        for element in aineKoodaineOppejoudElem{
-            countInDiv2 += 1
-            if (countInDiv2==1){
-                kellAine.append(try! element.text())
-            }
-            if (countInDiv2==2){
-                ainekood.append(try! element.text())
-            }
-            if (countInDiv2==3){
-                oppejoud.append(try! element.text())
-            }
-            if (countInDiv2 >= 4){
-                countInDiv2 = 0
-            }
-            
-        }*/
-        
-        latestgrades = [
-            Course(name: tunnid[0], teacher: oppejoud[0], grade: "B")
-        ]
-    }*/
-    
-    /*lazy var latestgrades: [Course] = [Course(name: tunnid[0], teacher: oppejoud[0], grade: "B")]*/
+
     
     func latestValue() -> [TunniPlaan]{
         /*var latestgrades: [Course] = [Course(name: tunnid[0], teacher: oppejoud[0], grade: "B")]*/
@@ -124,9 +88,9 @@ struct TunniPlaanView: View {
         } else {
             Text("Tunnid puuduvad")
         }
-        Button(action: {ExperimentFunc().testFunc()}, label: {
+        /*Button(action: {ExperimentFunc().testFunc()}, label: {
             Text("Test")
-        })
+        })*/
     }
 }
 

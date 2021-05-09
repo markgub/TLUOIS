@@ -7,94 +7,85 @@
 
 import SwiftUI
 
+struct StudyPlanCourse: Identifiable {
+    var id = UUID()
+    var name:String
+    var code:String
+    var EAP:String
+}
 
-struct MainPageView: View {
-    
-    
-    @State var selectedIndex = 0
+struct StudyPlanRow: View {
     
     let darkRedColor = Color(red: 0.72, green: 0.07, blue: 0.20)
-    
+
     let lightGreyColor = Color(red: 0.58, green: 0.59, blue: 0.69)
     
-    
-    let tabBarImageNames = ["list.bullet.rectangle", "calendar.badge.clock", "eyeglasses", "message", "star"]
+    var course: StudyPlanCourse
     
     var body: some View {
-        
-        VStack {
-            
-            ZStack {
-                switch selectedIndex {
-                case 0:
-                    NavigationView{
-                        VStack{
-                            HStack{
-                                LessonsShortView()
-                            }
-                            HStack{
-                                LatestGradesView()
-                            }
-                        }
-                        .navigationTitle("Avaleht")
-                    }
-                    
-                case 1:
-                    NavigationView{
-                        VStack{
-                            //TunniPlaanView(a, b, c, d, e, f)
-                        }
-                            .navigationTitle("Minu tunniplaan")
-                    }
-                    
-                case 2:
-                    NavigationView{
-                        Text("Õpingukava")
-                            .navigationTitle("Minu õpingukava")
-                    }
-                    
-                case 3:
-                    NavigationView{
-                        Text("Teated")
-                            .navigationTitle("Teated")
-                    }
-                    
-                case 4:
-                    NavigationView{
-                        Text("Õppetulemused")
-                            .navigationTitle("Õppetulemused")
-                    }
-                    
-                default:
-                    NavigationView{
-                        Text("Reamaining tabs")
-                    }
-                }
+        HStack {
+            VStack(alignment: .leading) {
+                Text(course.name)
+                Text(course.code).font(.subheadline).foregroundColor(lightGreyColor)
             }
-            
             Spacer()
-            
-            HStack {
-                ForEach(0..<5) { num in
-                    Button(action: {
-                        selectedIndex = num
-                    }, label: {
-                        Spacer()
-                        Image(systemName: tabBarImageNames[num])
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(selectedIndex == num ? darkRedColor : lightGreyColor)
-                        Spacer()
-                    })
-                    
-                }
+            VStack{
+                Text(course.EAP).font(.headline).foregroundColor(darkRedColor)
             }
+        }.navigationBarTitle("Avaleht")
+        .navigationBarBackButtonHidden(true)
+    }
+}
+struct MainPageView: View {
+    
+    var (planNames, planCodes, planEAP, gradesDates, gradesGrades, gradesName, gradesTeachers, gradesEAP) = ExperimentFunc().getMainPage()
+    
+    
+    func latestValue() -> [StudyPlanCourse]{
+        var latestgrades: [StudyPlanCourse] = []
+        var i = 0
+        for _ in planNames{
+            latestgrades.append(StudyPlanCourse(name: planNames[i], code: planCodes[i], EAP: planEAP[i]))
+            i += 1
         }
+        
+        return latestgrades
+    }
+    
+    //var i: int;
+    var body: some View {
+        if(!planNames.isEmpty){
+            List {
+                Section(header: StudyPlaanHeader(), footer: StudyPlaanFooter()) {
+                    ForEach(latestValue()) { course in
+                        StudyPlanRow(course: course)
+                    }
+                }
+            }.listStyle(GroupedListStyle())
+        } else {
+            Text("Opingukava puudub")
+        }
+        Button(action: {GradesFunc().getGrades()}, label: {
+            Text("Test StudyPlan Func")
+        })
     }
 }
 
 
+struct StudyPlaanHeader: View {
+    var body: some View {
+        HStack {
+            //Image(systemName: "star")
+            Text("OPINGUKAVA(ESITATUD)")
+        }
+    }
+}
 
-
+struct StudyPlaanFooter: View {
+    var body: some View {
+        Text("")
+    }
+}
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         MainPageView()

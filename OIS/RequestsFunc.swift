@@ -130,7 +130,7 @@ struct RequestsFunc {
                     print (kellAine)*/
                     /*TunniPlaanView.fillTunnip(tunnidElem: tunnidElem, ryhmadElem: ryhmadElem, klassElem: klassElem, aineKoodaineOppejoudElem: aineKoodaineOppejoudElem)*/
                     //return tunnid; ryhmad; klass; ainekood; oppejoud; kellAine;
-                    return (tunnid, ryhmad, klass, ainekood, oppejoud, kellAine)
+                    //return (tunnid, ryhmad, klass, ainekood, oppejoud, kellAine)
                 }
         } catch let error {
             print("Error: \(error)")
