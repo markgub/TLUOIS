@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  TunniplaanFunc.swift
 //  OIS
 //
-//  Created by Vladislav on 16.03.2021.
+//  Created by User on 10.05.2021.
 //
 
 import Foundation
@@ -11,53 +11,9 @@ import SwiftSoup
 import WebKit
 
 
-struct RequestsFunc {
+struct TunniplaanFunc {
     
-    @Binding var username: String
-    @Binding var password: String
-    
-    @Binding var authenticationDidFail: Bool
-    @Binding var authenticationDidSucceed: Bool
-    
-    @State var tunnid: [String] = []
-    
-    func tryLogin() {
-        let loginURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=9A46066693F9020547B19035E345EAEE&p_type=ois&p_user=\(username)&p_pwd=\(password)&p_mobiil=big&p_mobiil_tel="
-        
-        guard let loginURL = URL(string: loginURLString) else { return }
-            
-        do {
-            let loginHTMLString = try! String(contentsOf: loginURL, encoding: .utf8)
-            //let loginHTMLContent = loginHTMLString
-            do {
-                let doc: Document = try SwiftSoup.parse(loginHTMLString)
-                do {
-                    let loginHTMLParsed = try doc.select("input").first()!
-                    
-                    let authSuccText = try! loginHTMLParsed.attr("name")
-                    
-                    //print (authSuccText as Any)
-                    
-                    if (authSuccText == "p_kasutaja_tk_str_id") {
-                        if (authenticationDidFail == true){
-                            authenticationDidFail = false
-                        }
-                        authenticationDidSucceed = true
-                    }
-                    else {
-                        if (authenticationDidSucceed == true){
-                            authenticationDidSucceed = false
-                        }
-                        authenticationDidFail = true
-                    }
-                }
-            }
-            //print(loginHTMLString)
-        } catch let error {
-            print("Error: \(error)")
-        }
-    }
-    /*func showTunnip() -> ([String], [String], [String], [String], [String], [String]){
+    func showTunnip() -> ([String], [String], [String], [String], [String], [String]){
         /*let loginURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=9A46066693F9020547B19035E345EAEE&p_type=ois&p_user=\(username)&p_pwd=\(password)&p_mobiil=big&p_mobiil_tel="
         
         let session = URLSession.shared
@@ -137,5 +93,5 @@ struct RequestsFunc {
         }
     }
         return (tunnid, ryhmad, klass, ainekood, oppejoud, kellAine)
-    }*/
+    }
 }

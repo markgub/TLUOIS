@@ -20,6 +20,7 @@
 		8BFEAD1E25FE4F0800C364E0 /* OISTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEAD1D25FE4F0800C364E0 /* OISTests.swift */; };
 		8BFEAD2925FE4F0800C364E0 /* OISUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFEAD2825FE4F0800C364E0 /* OISUITests.swift */; };
 		AD24A48051C70D82F36E67FD /* Pods_OIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0C34177D89E5A022F776A9 /* Pods_OIS.framework */; };
+		CE414BD326488B4100ACBDEF /* TunniplaanFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE414BD226488B4100ACBDEF /* TunniplaanFunc.swift */; };
 		CE4F1EEE2635BDC900E94736 /* ExperimentFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1EED2635BDC900E94736 /* ExperimentFunc.swift */; };
 		CE6384FF26482878001F1180 /* StudyPlanFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6384FE26482878001F1180 /* StudyPlanFunc.swift */; };
 		CE638504264842DE001F1180 /* GradesFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE638503264842DE001F1180 /* GradesFunc.swift */; };
@@ -67,6 +68,7 @@
 		8BFEAD2425FE4F0800C364E0 /* OISUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OISUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFEAD2825FE4F0800C364E0 /* OISUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OISUITests.swift; sourceTree = "<group>"; };
 		8BFEAD2A25FE4F0800C364E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE414BD226488B4100ACBDEF /* TunniplaanFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunniplaanFunc.swift; sourceTree = "<group>"; };
 		CE4F1EED2635BDC900E94736 /* ExperimentFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentFunc.swift; sourceTree = "<group>"; };
 		CE6384FE26482878001F1180 /* StudyPlanFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPlanFunc.swift; sourceTree = "<group>"; };
 		CE638503264842DE001F1180 /* GradesFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesFunc.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				CE4F1EED2635BDC900E94736 /* ExperimentFunc.swift */,
 				CE6384FE26482878001F1180 /* StudyPlanFunc.swift */,
 				CE638503264842DE001F1180 /* GradesFunc.swift */,
+				CE414BD226488B4100ACBDEF /* TunniplaanFunc.swift */,
 			);
 			path = OIS;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				8BFEAD0E25FE4F0500C364E0 /* LoginPageView.swift in Sources */,
 				868D2E1725FFD78700DFF956 /* ContentView.swift in Sources */,
 				CE638504264842DE001F1180 /* GradesFunc.swift in Sources */,
+				CE414BD326488B4100ACBDEF /* TunniplaanFunc.swift in Sources */,
 				86E38C3126014E1B00F58C18 /* RequestsFunc.swift in Sources */,
 				CE4F1EEE2635BDC900E94736 /* ExperimentFunc.swift in Sources */,
 				8BFEAD0C25FE4F0500C364E0 /* OISApp.swift in Sources */,

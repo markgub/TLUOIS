@@ -65,9 +65,14 @@ struct MainPageView: View {
         } else {
             Text("Opingukava puudub")
         }
-        Button(action: {GradesFunc().getGrades()}, label: {
+        /*Button(action: {GradesFunc().getGrades()}, label: {
             Text("Test StudyPlan Func")
-        })
+        })*/
+        /*NavigationLink(
+            destination: TunniPlaanView(),
+            label: {
+                Text("Tunniplaan")
+            })*/
     }
 }
 
@@ -82,8 +87,45 @@ struct StudyPlaanHeader: View {
 }
 
 struct StudyPlaanFooter: View {
+    let tabBarImageNames = ["list.bullet.rectangle", "calendar.badge.clock", "eyeglasses", "star"]
     var body: some View {
-        Text("")
+        VStack{
+            HStack(alignment: .bottom){
+                Spacer()
+                NavigationLink(
+                    destination: MainPageView(),
+                    label: {
+                        Image(systemName: tabBarImageNames[0])
+                            .font(.system(size: 25, weight: .bold))
+                            .foregroundColor(darkRedColor)
+                    })
+                Spacer()
+                NavigationLink(
+                    destination: TunniPlaanView(),
+                    label: {
+                        Image(systemName: tabBarImageNames[1])
+                            .font(.system(size: 25, weight: .bold))
+                            .foregroundColor(darkRedColor)
+                    })
+                Spacer()
+                NavigationLink(
+                    destination: LessonsShortView(),
+                    label: {
+                        Image(systemName: tabBarImageNames[2])
+                            .font(.system(size: 25, weight: .bold))
+                            .foregroundColor(darkRedColor)
+                    })
+                Spacer()
+                NavigationLink(
+                    destination: LatestGradesView(),
+                    label: {
+                        Image(systemName: tabBarImageNames[3])
+                            .font(.system(size: 25, weight: .bold))
+                            .foregroundColor(darkRedColor)
+                    })
+                Spacer()
+            }
+        }
     }
 }
 struct SwiftUIView_Previews: PreviewProvider {

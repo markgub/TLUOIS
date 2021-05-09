@@ -46,12 +46,15 @@ struct TunniPlaanRow: View {
 struct TunniPlaanView: View {
     /*@State var password: String
     @State var username: String*/
-    @Binding var tunnid: [String]
+    /*@Binding var tunnid: [String]
     @Binding var ryhmad: [String]
     @Binding var klass: [String]
     @Binding var oppejoud: [String]
     @Binding var ainekood: [String]
     @Binding var kellAine: [String]
+    @State var success: Bool*/
+
+    var (tunnid, ryhmad, klass, oppejoud, ainekood, kellAine) = TunniplaanFunc().showTunnip()
     
     /*var tunnid: [String] = []
     var ryhmad: [String] = []

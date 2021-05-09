@@ -52,7 +52,7 @@ struct LoginPageView: View {
                 NavigationLink(destination: MainPageView(/*tunnid: $tunnid, ryhmad: $ryhmad, klass: $klass, oppejoud: $oppejoud, ainekood: $ainekood, kellAine: $kellAine*/), isActive: $authenticationDidSucceed) {
                                     Button(action: {
                                         RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()
-                                        (tunnid, ryhmad, klass, ainekood, oppejoud, kellAine) = RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
+                                        /*(tunnid, ryhmad, klass, ainekood, oppejoud, kellAine) = RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()*/
                                         UserDefaults.standard.set(self.username, forKey: "Username")
                                     }) {
                                         LoginButtonContent()
