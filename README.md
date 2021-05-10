@@ -9,7 +9,7 @@ Eesmärk ja lühikirjeldus:
   Projekt on sündinud ja arendatud Tallinna Ülikooli Digitehnoloogia Instituudi Mobiilrakenduste arendamine aine raames.
 
 <p align=center>
- <img src="https://cdn.discordapp.com/attachments/813108684028510208/820782978610233424/image0.png" width="250" height="535">  <img src="https://cdn.discordapp.com/attachments/813108684028510208/820804846814756904/image1.png" width="250" height="535" |
+ <img src="https://cdn.discordapp.com/attachments/813108684028510208/820782978610233424/image0.png" width="250" height="535">  <img src="https://media.discordapp.net/attachments/763628368398516235/841301180613132308/unknown.png" width="250" height="535" |
 </p>
 
 ### Kasutatud tarkvara
