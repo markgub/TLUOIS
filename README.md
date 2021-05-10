@@ -3,7 +3,7 @@
 Eesmärk ja lühikirjeldus:
 
   - TLÜÕIS on projekt, mille raames meeskond töötab Tallinna Ülikooli ÕISi iOS rakenduse üle
-  - Eesmärgiks on luua peamise TLÜ ÕISi funktsionaalsusega iOS rakendust 
+  - Eesmärgiks on luua TLÜ ÕISi funktsionaalsusega sarnast iOS rakendust 
   - Kuna Tallinna Ülikooli ÕISis puudub API ning meeskonnal puudub läbipääs serveritele, kogu projekt töötab requestide ja parsingu kaudu
   
   Projekt on sündinud ja arendatud Tallinna Ülikooli Digitehnoloogia Instituudi Mobiilrakenduste arendamine aine raames.
