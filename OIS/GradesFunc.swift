@@ -13,12 +13,12 @@ import WebKit
 struct GradesFunc {
     
     //Function that will return information from student performance grades
-    func getGrades() -> ([String],[String],[String],[String],[String],[String],[String],[String], [String], [String], [String]){
+    func getGrades() -> ([String],[String],[String],[String],[String],[String],[String], [String], [String], [String]){
         //URL of study plan page
         let myURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=413332E484BE8E40EAC2321AB27965E8ABD5B1365AB47F36C0F47963964F1D38CAD7DB9C7B3DA80A&p_rnd=1620563314520"
         //Empty array that is going to replace all arrays in case of error
         let emptyArr: [String] = []
-        guard let myURL = URL(string: myURLString) else {return(emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr)}
+        guard let myURL = URL(string: myURLString) else {return(emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr)}
         
         //Arrays that are going to contain information for the courses in the study plan
         var names: [String] = []
@@ -82,7 +82,7 @@ struct GradesFunc {
                 codes.removeLast()
                 
                 //print(try! valge.text())
-                i = 0
+                /*i = 0
                 for _ in names{
                     print(names[i])
                     print(codes[i])
@@ -91,11 +91,10 @@ struct GradesFunc {
                     print(semester[i])
                     print(grades[i])
                     print(dates[i])
-                    print(teachers[i])
                     print(completed[i])
                     print(comments[i])
                     i += 1
-                }
+                }*/
             }catch let error {
                 print("Error: \(error)")
             }
@@ -103,6 +102,6 @@ struct GradesFunc {
             print("Error: \(error)")
         }
         //Returns the arrays
-        return (names, codes, teachers, EAP, semester, grades, dates, teachers, completed, comments, totalKKH)
+        return (names, codes, teachers, EAP, semester, grades, dates, completed, comments, totalKKH)
     }
 }

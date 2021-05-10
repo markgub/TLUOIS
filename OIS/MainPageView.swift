@@ -56,15 +56,16 @@ struct MainPageView: View {
     var body: some View {
         if(!planNames.isEmpty){
             List {
-                Section(header: StudyPlaanHeader(), footer: StudyPlaanFooter()) {
+                Section(header: StudyPlaanHeader()) {
                     ForEach(latestValue()) { course in
                         StudyPlanRow(course: course)
                     }
                 }
             }.listStyle(GroupedListStyle())
         } else {
-            Text("Opingukava puudub")
+            Text("Õpingukava puudub")
         }
+        NavBar()
         /*Button(action: {GradesFunc().getGrades()}, label: {
             Text("Test StudyPlan Func")
         })*/
@@ -81,15 +82,16 @@ struct StudyPlaanHeader: View {
     var body: some View {
         HStack {
             //Image(systemName: "star")
-            Text("OPINGUKAVA(ESITATUD)")
+            Text("ÕPINGUKAVA(ESITATUD)")
         }
     }
 }
 
-struct StudyPlaanFooter: View {
+/*struct StudyPlaanFooter: View {
     let tabBarImageNames = ["list.bullet.rectangle", "calendar.badge.clock", "eyeglasses", "star"]
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
+            Spacer().frame(maxWidth: .infinity)
             HStack(alignment: .bottom){
                 Spacer()
                 NavigationLink(
@@ -114,6 +116,7 @@ struct StudyPlaanFooter: View {
                         Image(systemName: tabBarImageNames[2])
                             .font(.system(size: 25, weight: .bold))
                             .foregroundColor(darkRedColor)
+                            .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     })
                 Spacer()
                 NavigationLink(
@@ -125,9 +128,9 @@ struct StudyPlaanFooter: View {
                     })
                 Spacer()
             }
-        }
+        }.frame(maxHeight: 50)
     }
-}
+}*/
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         MainPageView()

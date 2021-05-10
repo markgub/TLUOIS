@@ -38,6 +38,8 @@ struct TunniPlaanRow: View {
                 Text(course.time).font(.headline).foregroundColor(darkRedColor)
                 Text(course.place)
             }
+            .navigationBarTitle("Tunniplaan")
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -91,6 +93,7 @@ struct TunniPlaanView: View {
         } else {
             Text("Tunnid puuduvad")
         }
+        NavBar()
         /*Button(action: {ExperimentFunc().testFunc()}, label: {
             Text("Test")
         })*/

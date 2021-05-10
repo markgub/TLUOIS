@@ -22,6 +22,7 @@
 		AD24A48051C70D82F36E67FD /* Pods_OIS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0C34177D89E5A022F776A9 /* Pods_OIS.framework */; };
 		CE414BD326488B4100ACBDEF /* TunniplaanFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE414BD226488B4100ACBDEF /* TunniplaanFunc.swift */; };
 		CE4F1EEE2635BDC900E94736 /* ExperimentFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F1EED2635BDC900E94736 /* ExperimentFunc.swift */; };
+		CE4FF44A26491F840009372F /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FF44926491F840009372F /* NavBar.swift */; };
 		CE6384FF26482878001F1180 /* StudyPlanFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6384FE26482878001F1180 /* StudyPlanFunc.swift */; };
 		CE638504264842DE001F1180 /* GradesFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE638503264842DE001F1180 /* GradesFunc.swift */; };
 		CEA73227262D9BE100318123 /* Login.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEA73225262D9BE100318123 /* Login.xcdatamodeld */; };
@@ -70,6 +71,7 @@
 		8BFEAD2A25FE4F0800C364E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE414BD226488B4100ACBDEF /* TunniplaanFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunniplaanFunc.swift; sourceTree = "<group>"; };
 		CE4F1EED2635BDC900E94736 /* ExperimentFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentFunc.swift; sourceTree = "<group>"; };
+		CE4FF44926491F840009372F /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		CE6384FE26482878001F1180 /* StudyPlanFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPlanFunc.swift; sourceTree = "<group>"; };
 		CE638503264842DE001F1180 /* GradesFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesFunc.swift; sourceTree = "<group>"; };
 		CEA73226262D9BE100318123 /* Login.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Login.xcdatamodel; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				CE6384FE26482878001F1180 /* StudyPlanFunc.swift */,
 				CE638503264842DE001F1180 /* GradesFunc.swift */,
 				CE414BD226488B4100ACBDEF /* TunniplaanFunc.swift */,
+				CE4FF44926491F840009372F /* NavBar.swift */,
 			);
 			path = OIS;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				CE638504264842DE001F1180 /* GradesFunc.swift in Sources */,
 				CE414BD326488B4100ACBDEF /* TunniplaanFunc.swift in Sources */,
 				86E38C3126014E1B00F58C18 /* RequestsFunc.swift in Sources */,
+				CE4FF44A26491F840009372F /* NavBar.swift in Sources */,
 				CE4F1EEE2635BDC900E94736 /* ExperimentFunc.swift in Sources */,
 				8BFEAD0C25FE4F0500C364E0 /* OISApp.swift in Sources */,
 				860B12F826248A0200FE351E /* TunniPlaanView.swift in Sources */,
