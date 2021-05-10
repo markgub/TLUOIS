@@ -12,10 +12,30 @@ Eesmärk ja lühikirjeldus:
  <img src="https://cdn.discordapp.com/attachments/813108684028510208/820782978610233424/image0.png" width="250" height="535">  <img src="https://cdn.discordapp.com/attachments/813108684028510208/820804846814756904/image1.png" width="250" height="535" |
 </p>
 
+### Kasutatud tarkvara
+
+| Tarkvara | Versioon |
+| ------ | ------ |
+| Xcode | 12 |
+| Virtualbox | 6.1 |
+
+| Teek | 
+| ------ |
+| SwiftUI |
+| CocoaPods |
+| SwiftSoup | 
+| WebKit | 
+
+### Kompileerimine, kasutamine
+
+- Laadige alla projekti faile GitHubist
+- Avage Xcode-is OIS.xcworkspace faili projekti kaustas
+- Valige sobivat seadmet või seadmesimulaatorit testimiseks
+- Vajutage "Build and run the current scheme" nuppu
+
 ### Projekti panustajad
 - Mark-Kirill Gubal
 - Vladislav Priske
-- Jevgeni Prostsenko
 - Maksim Sitkin
 - Alek-Jaan Tšern
 
