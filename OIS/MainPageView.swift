@@ -2,16 +2,26 @@
 //  SwiftUIView.swift
 //  OIS
 //
-//  Created by root user on 14.03.2021.
-//
+
 
 import SwiftUI
 
+//Struct for study plan courses
 struct StudyPlanCourse: Identifiable {
     var id = UUID()
     var name:String
     var code:String
     var EAP:String
+}
+
+//Struct for latest grades
+struct latestGrade: Identifiable {
+    var id = UUID()
+    var date: String
+    var name: String
+    var teacher: String
+    var grade: String
+    var EAP: String
 }
 
 struct StudyPlanRow: View {
@@ -36,11 +46,34 @@ struct StudyPlanRow: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
+struct latestGradeRow: View{
+    let darkRedColor = Color(red: 0.72, green: 0.07, blue: 0.20)
+
+    let lightGreyColor = Color(red: 0.58, green: 0.59, blue: 0.69)
+    
+    var course: latestGrade
+    
+    //Sets the apperance of each row
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(course.name)
+                Text("\(course.teacher), \(course.date)").font(.subheadline).foregroundColor(lightGreyColor)
+            }
+            Spacer()
+            VStack{
+                Text(course.grade).font(.headline).foregroundColor(darkRedColor)
+            }
+            Text(course.EAP)
+        }.navigationBarTitle("Avaleht")
+        .navigationBarBackButtonHidden(true)
+    }}
 struct MainPageView: View {
+    //Arrays that we receive from ExperimentFunc. They contain information about study plan and the grades
+    var (planNames, planCodes, planEAP, gradesDates, gradesGrades, gradesNames, gradesTeachers, gradesEAP) = ExperimentFunc().getMainPage()
     
-    var (planNames, planCodes, planEAP, gradesDates, gradesGrades, gradesName, gradesTeachers, gradesEAP) = ExperimentFunc().getMainPage()
-    
-    
+    //Returns arrays consisting of StudyPlanCourse structs
     func latestValue() -> [StudyPlanCourse]{
         var latestgrades: [StudyPlanCourse] = []
         var i = 0
@@ -52,6 +85,17 @@ struct MainPageView: View {
         return latestgrades
     }
     
+    //Returns arrays consisting of StudyPlanCourse structs
+    func latestGrades() -> [latestGrade]{
+        var latestgrades: [latestGrade] = []
+        var i = 0
+        for _ in gradesNames{
+            latestgrades.append(latestGrade(date: gradesDates[i], name: gradesNames[i], teacher: gradesTeachers[i], grade: gradesGrades[i], EAP: gradesEAP[i]))
+            i += 1
+        }
+        
+        return latestgrades
+    }
     //var i: int;
     var body: some View {
         if(!planNames.isEmpty){
@@ -65,15 +109,18 @@ struct MainPageView: View {
         } else {
             Text("Õpingukava puudub")
         }
+        if(gradesNames.isEmpty){
+            Text("Viimased hinded puuduvad")
+        } else {
+            List{
+                Section(header: latestGradesHeader()){
+                    ForEach(latestGrades()) { course in
+                        latestGradeRow(course: course)
+                    }
+                }
+            }.listStyle(GroupedListStyle())
+        }
         NavBar()
-        /*Button(action: {GradesFunc().getGrades()}, label: {
-            Text("Test StudyPlan Func")
-        })*/
-        /*NavigationLink(
-            destination: TunniPlaanView(),
-            label: {
-                Text("Tunniplaan")
-            })*/
     }
 }
 
@@ -81,56 +128,20 @@ struct MainPageView: View {
 struct StudyPlaanHeader: View {
     var body: some View {
         HStack {
-            //Image(systemName: "star")
-            Text("ÕPINGUKAVA(ESITATUD)")
+            Image(systemName: "eyeglasses")
+            Text("Õpingukava(ESITATUD)")
         }
     }
 }
 
-/*struct StudyPlaanFooter: View {
-    let tabBarImageNames = ["list.bullet.rectangle", "calendar.badge.clock", "eyeglasses", "star"]
+struct latestGradesHeader: View {
     var body: some View {
-        VStack(alignment: .leading){
-            Spacer().frame(maxWidth: .infinity)
-            HStack(alignment: .bottom){
-                Spacer()
-                NavigationLink(
-                    destination: MainPageView(),
-                    label: {
-                        Image(systemName: tabBarImageNames[0])
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(darkRedColor)
-                    })
-                Spacer()
-                NavigationLink(
-                    destination: TunniPlaanView(),
-                    label: {
-                        Image(systemName: tabBarImageNames[1])
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(darkRedColor)
-                    })
-                Spacer()
-                NavigationLink(
-                    destination: LessonsShortView(),
-                    label: {
-                        Image(systemName: tabBarImageNames[2])
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(darkRedColor)
-                            .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    })
-                Spacer()
-                NavigationLink(
-                    destination: LatestGradesView(),
-                    label: {
-                        Image(systemName: tabBarImageNames[3])
-                            .font(.system(size: 25, weight: .bold))
-                            .foregroundColor(darkRedColor)
-                    })
-                Spacer()
-            }
-        }.frame(maxHeight: 50)
+        HStack {
+            Image(systemName: "star")
+            Text("Viimased hinded")
+        }
     }
-}*/
+}
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         MainPageView()

@@ -14,7 +14,6 @@ struct TunniPlaan: Identifiable {
     var teacher: String
     var time: String
     var place: String
-    //var nameCode: String
     var groups: String
 }
 
@@ -26,6 +25,7 @@ struct TunniPlaanRow: View {
     
     var course: TunniPlaan
     
+    //Specifies the look of each Course struct
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -38,36 +38,16 @@ struct TunniPlaanRow: View {
                 Text(course.time).font(.headline).foregroundColor(darkRedColor)
                 Text(course.place)
             }
-            .navigationBarTitle("Tunniplaan")
-            .navigationBarBackButtonHidden(true)
-        }
+        }.navigationBarTitle("Tunniplaan")
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 
 struct TunniPlaanView: View {
-    /*@State var password: String
-    @State var username: String*/
-    /*@Binding var tunnid: [String]
-    @Binding var ryhmad: [String]
-    @Binding var klass: [String]
-    @Binding var oppejoud: [String]
-    @Binding var ainekood: [String]
-    @Binding var kellAine: [String]
-    @State var success: Bool*/
-
+    //Arrays from TunniplaanFunc
     var (tunnid, ryhmad, klass, oppejoud, ainekood, kellAine) = TunniplaanFunc().showTunnip()
-    
-    /*var tunnid: [String] = []
-    var ryhmad: [String] = []
-    var klass: [String] = []
-    var oppejoud: [String] = []
-    var ainekood: [String] = []
-    var kellAine: [String] = []*/
-    
-    
 
-    
     func latestValue() -> [TunniPlaan]{
         /*var latestgrades: [Course] = [Course(name: tunnid[0], teacher: oppejoud[0], grade: "B")]*/
         var latestgrades: [TunniPlaan] = []
@@ -94,16 +74,12 @@ struct TunniPlaanView: View {
             Text("Tunnid puuduvad")
         }
         NavBar()
-        /*Button(action: {ExperimentFunc().testFunc()}, label: {
-            Text("Test")
-        })*/
     }
 }
 
 struct TunniplaanHeader: View {
     var body: some View {
         HStack {
-            //Image(systemName: "star")
             Text("Täna on ")
         }
     }

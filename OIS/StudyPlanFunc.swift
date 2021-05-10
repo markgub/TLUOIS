@@ -12,12 +12,12 @@ import WebKit
 struct StudyPlanFunc {
     
     //Function that will return information from study plan page
-    func getStudyPlan() -> ([String],[String],[String],[String],[String],[String],[String],[String], [String], [String]){
+    func getStudyPlan() -> ([String],[String],[String],[String],[String],[String],[String],[String], [String], [String], [String]){
         //URL of study plan page
         let myURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=F16F063C4A9AC776422AF6B549C592D0A719926CC31E3BA70301224C95CEF98E"
         //Empty array that is going to replace all arrays in case of error
-        let empryArr: [String] = []
-        guard let myURL = URL(string: myURLString) else {return(empryArr, empryArr, empryArr, empryArr, empryArr, empryArr, empryArr, empryArr, empryArr, empryArr)}
+        let emptyArr: [String] = []
+        guard let myURL = URL(string: myURLString) else {return(emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr)}
         
         //Arrays that are going to contain information for the courses in the study plan
         var names: [String] = []
@@ -30,6 +30,7 @@ struct StudyPlanFunc {
         var prerequisites: [String] = []
         var until: [String] = []
         var secondListenings: [String] = []
+        var total: [String] = []
         do {
             //New constant that will hold the contents of page
             let contents = try String(contentsOf: myURL)
@@ -37,7 +38,8 @@ struct StudyPlanFunc {
                 let docMain: Document = try SwiftSoup.parseBodyFragment(contents)
                 
                 //Fetch the contents of div with an id="esivorm21"
-                let valge: Elements = try docMain.getElementsByClass("valge") //We avoi fetching total amount of EAPs with pseudo selecter div:not
+                let valge: Elements = try docMain.getElementsByClass("valge") //We select only
+                let kokku: Elements = try docMain.getElementsByClass("kokku").select("div > div > div")
                 var i = 0
                 
                 //The following array is sorting elements into their corresponding arrays as strings
@@ -68,19 +70,15 @@ struct StudyPlanFunc {
                         i = 0
                     }
                 }
+                
+                for element in kokku {
+                    total.append(try! element.text())
+                }
                 //print(try! valge.text())
-                //i = 0
-                /*for _ in names{
-                    print(names[i])
-                    print(languages[i])
-                    print(teachers[i])
-                    print(status[i])
-                    print(modules[i])
-                    print(EAP[i])
-                    print(prices[i])
-                    print(prerequisites[i])
-                    print(until[i])
-                    print(secondListenings[i])
+                /*i = 0
+                for _ in total{
+                    print(total[i])
+                    print(i)
                     i += 1
                 }*/
             } catch let error {
@@ -90,6 +88,6 @@ struct StudyPlanFunc {
             print("Error: \(error)")
         }
         //Returns the arrays
-        return (names, languages, teachers, status, modules, EAP, prices, prerequisites, until, secondListenings)
+        return (names, languages, teachers, status, modules, EAP, prices, prerequisites, until, secondListenings, total)
     }
 }

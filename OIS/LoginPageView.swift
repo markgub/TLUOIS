@@ -2,9 +2,7 @@
 //  ContentView.swift
 //  OIS
 //
-//  Created by root user on 14.03.2021.
 //
-
 import SwiftUI
 import SwiftSoup
 import WebKit
@@ -15,25 +13,15 @@ let darkRedColor = Color(red: 0.72, green: 0.07, blue: 0.20)
 
 struct LoginPageView: View {
     
-    /*let persistenceController = PersistenceController.shared
-    ContentView()
-        .environment(\.managedObjectContext, persistenceController.container.viewContext)*/
-    
+    //Variables that will hold username and password of user
     @State var username: String = UserDefaults.standard.string(forKey: "Username") ?? ""
     @State var password: String = ""
     
+    //Booleans that will control the success of log in attempt
     @State var authenticationDidFail: Bool = false
     @State var authenticationDidSucceed: Bool = false
     
-    var test: [String] = ["Test"]
-    /*var everything: ([String], [String], [String], [String], [String], [String]) = (["Test"],["Tesst"],["T"],["fds"],["aaa"],["Pomogite"])*/
-    
-    @State var tunnid: [String] = []
-    @State var ryhmad: [String] = []
-    @State var klass: [String] = []
-    @State var oppejoud: [String] = []
-    @State var ainekood: [String] = []
-    @State var kellAine: [String] = []
+    //The final login page view that consists of ther views
     var body: some View {
         NavigationView {
             ZStack{
@@ -48,22 +36,15 @@ struct LoginPageView: View {
                         .offset(y: -10)
                         .foregroundColor(darkRedColor)
                 }
-                
-                NavigationLink(destination: MainPageView(/*tunnid: $tunnid, ryhmad: $ryhmad, klass: $klass, oppejoud: $oppejoud, ainekood: $ainekood, kellAine: $kellAine*/), isActive: $authenticationDidSucceed) {
+                //These navigation link in case of succesful login lead to the main page. Otherwise, it will inform user of failed log in attempt
+                NavigationLink(destination: MainPageView(), isActive: $authenticationDidSucceed) {
                                     Button(action: {
                                         RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()
-                                        /*(tunnid, ryhmad, klass, ainekood, oppejoud, kellAine) = RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()*/
                                         UserDefaults.standard.set(self.username, forKey: "Username")
                                     }) {
                                         LoginButtonContent()
                                     }
                 }
-                /*Button(action: {
-                    /*RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).tryLogin()*/
-                    RequestsFunc(username: $username, password: $password, authenticationDidFail: $authenticationDidFail, authenticationDidSucceed: $authenticationDidSucceed).showTunnip()
-                }) {
-                    LoginButtonContent()
-                }*/
                 }
             }
             .padding()
@@ -84,7 +65,7 @@ struct HelloText: View {
         }
     }
 }
-
+//The logo on the log in page
 struct Logo: View {
     var body: some View {
         Image("TLU_logo")

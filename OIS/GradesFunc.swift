@@ -80,21 +80,6 @@ struct GradesFunc {
                 names.removeLast()
                 totalKKH.append(codes[codes.count-1])
                 codes.removeLast()
-                
-                //print(try! valge.text())
-                /*i = 0
-                for _ in names{
-                    print(names[i])
-                    print(codes[i])
-                    print(teachers[i])
-                    print(EAP[i])
-                    print(semester[i])
-                    print(grades[i])
-                    print(dates[i])
-                    print(completed[i])
-                    print(comments[i])
-                    i += 1
-                }*/
             }catch let error {
                 print("Error: \(error)")
             }

@@ -2,20 +2,20 @@
 //  NavBar.swift
 //  OIS
 //
-//  Created by User on 10.05.2021.
-//
+
 
 import Foundation
 import SwiftUI
 
+//This struct creates navigation menu at the bottom of the screen
 struct NavBar: View{
-    let tabBarImageNames = ["list.bullet.rectangle", "calendar.badge.clock", "eyeglasses", "star"]
-    @State private var currentTab = 0
+    let tabBarImageNames = ["list.bullet.rectangle", "calendar.badge.clock", "eyeglasses", "star"] //icon names
     var body: some View {
         VStack(alignment: .leading){
             Spacer().frame(maxWidth: .infinity)
             HStack(alignment: .bottom){
                 Spacer()
+                //Link to "Main page"
                 NavigationLink(
                     destination: MainPageView(),
                     label: {
@@ -24,6 +24,7 @@ struct NavBar: View{
                             .foregroundColor(darkRedColor)
                     })
                 Spacer()
+                //Link to study schedule
                 NavigationLink(
                     destination: TunniPlaanView(),
                     label: {
@@ -32,6 +33,7 @@ struct NavBar: View{
                             .foregroundColor(darkRedColor)
                     })
                 Spacer()
+                //Link to study plan
                 NavigationLink(
                     destination: LessonsShortView(),
                     label: {
@@ -41,6 +43,7 @@ struct NavBar: View{
                             .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     })
                 Spacer()
+                //Link to all grades
                 NavigationLink(
                     destination: LatestGradesView(),
                     label: {
@@ -50,6 +53,6 @@ struct NavBar: View{
                     })
                 Spacer()
             }
-        }.frame(maxHeight: 50)
+        }.frame(maxHeight: 50) //Makes sure that navigation bar wont take too much room
     }
 }

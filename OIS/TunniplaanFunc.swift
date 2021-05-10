@@ -2,8 +2,6 @@
 //  TunniplaanFunc.swift
 //  OIS
 //
-//  Created by User on 10.05.2021.
-//
 
 import Foundation
 import SwiftUI
@@ -14,13 +12,8 @@ import WebKit
 struct TunniplaanFunc {
     
     func showTunnip() -> ([String], [String], [String], [String], [String], [String]){
-        /*let loginURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=9A46066693F9020547B19035E345EAEE&p_type=ois&p_user=\(username)&p_pwd=\(password)&p_mobiil=big&p_mobiil_tel="
         
-        let session = URLSession.shared
-        
-        guard let loginURL = URL(string: loginURLString) else { return }
-        */
-        //tryLogin()
+        //Arrays that will be returned at the end of the function
         let emptyArr: [String] = []
         var oppejoud: [String] = []
         var ainekood: [String] = []
@@ -28,26 +21,28 @@ struct TunniplaanFunc {
         var klass: [String] = []
         var ryhmad: [String] = []
         var tunnid: [String] = []
+        //This variable specifies the day of lessons
         let day: Int = Calendar.current.component(.weekday, from: Date())-2
+        
+        //The URL of lesson schedule
         let tunnipURLString = "https://ois2.tlu.ee/tluois/!uus_ois2.ois_public.page?_page=21D02BFC64FA0CCC52A388D2A2990C7D90419DA7F185EAC00AA85210028D3067&d=\(day)&p_sess=x&p_rnd=1615160982141"
         guard let tunnipURL = URL(string: tunnipURLString) else { return (emptyArr, emptyArr, emptyArr, emptyArr, emptyArr, emptyArr) }
         do {
             let tunnipHTMLString = try! String(contentsOf: tunnipURL, encoding: .utf8)
-            //let loginHTMLContent = loginHTMLString
             do {
+                //Here we store the HTML code of the page
                 let docTunnip: Document = try SwiftSoup.parseBodyFragment(tunnipHTMLString)
                 do {
+                    //Array that contains course names as Elements
                     let tunnidElem = try! docTunnip.getElementsByClass("large_link2")
-                    //var tunnid: [String] = []
+                    //Array that contains study groups as Elements
                     let ryhmadElem = try! docTunnip.getElementsByTag("span")
-                    //var ryhmad: [String] = []
+                    //Array that contains studyrooms' names as Elements
                     let klassElem = try docTunnip.select("div > div > div + div + div + div")
-                    //var klass: [String] = []
+                    //Array that contains names of teachers as Elements
                     let aineKoodaineOppejoudElem = try docTunnip.select("div > div > div")
-                    /*var oppejoud: [String] = []
-                    var ainekood: [String] = []
-                    var kellAine: [String] = []*/
 
+                    //Next 3 for cycles convert data of type Elements to strings and saves them in corresponding arrays
                     for element in tunnidElem{
                         tunnid.append(try! element.text())
                     }
@@ -61,6 +56,7 @@ struct TunniplaanFunc {
                     }
                     
                     var countInDiv2 = 0
+                    //Also convers and saves variables, but also sorts them into rights arrays
                     for element in aineKoodaineOppejoudElem{
                         countInDiv2 += 1
                         if (countInDiv2==1){
@@ -77,16 +73,7 @@ struct TunniplaanFunc {
                         }
                         
                     }
-                    
-                    /*print (tunnid)
-                    print (ryhmad)
-                    print (klass)
-                    print (ainekood)
-                    print (oppejoud)
-                    print (kellAine)*/
-                    /*TunniPlaanView.fillTunnip(tunnidElem: tunnidElem, ryhmadElem: ryhmadElem, klassElem: klassElem, aineKoodaineOppejoudElem: aineKoodaineOppejoudElem)*/
-                    //return tunnid; ryhmad; klass; ainekood; oppejoud; kellAine;
-                    //return (tunnid, ryhmad, klass, ainekood, oppejoud, kellAine)
+
                 }
         } catch let error {
             print("Error: \(error)")

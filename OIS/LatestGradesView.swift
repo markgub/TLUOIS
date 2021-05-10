@@ -41,24 +41,14 @@ struct CourseRow: View {
                 Text(course.grade).font(.headline).foregroundColor(darkRedColor)
                 Text(course.ok)
             }
-            .navigationBarTitle("")
-            .navigationBarBackButtonHidden(true)
-        }
+        }.navigationBarTitle("Tulemused")
+        .navigationBarBackButtonHidden(true)//Hides the back button
     }
 }
 
 
 struct LatestGradesView: View {
-    
-    //@Binding var tunnid: String
-    
-    /*let latestgrades = [
-        Course(name: "Mingi tund", teacher: "Tanel Õunapuu", grade: "A"),
-        Course(name: "Arvutigraafika", teacher: "Mati Mõttus    ", grade: "B"),
-        Course(name: "Rakenduste programmeerimine", teacher: "Romil Rõbtšenkov", grade: "A"),
-        Course(name: "Teoreetiline informaatika", teacher: "Peeter Normak    ", grade: "C"),
-        Course(name: "Diskreetse matemaatika elemendid", teacher: "Tatjana Tamberg", grade: "B"),
-    ]*/
+    //Arrays that are received from GradesFunc containing the information about grades
     var (names, codes, teachers, EAP, semester, grades, dates, completed, comments, totalKKH) = GradesFunc().getGrades()
     
     //This function is going to create a massive consisting of courses from GradesFunc
@@ -66,12 +56,14 @@ struct LatestGradesView: View {
         var latestgrades: [Course] = []
         var i = 0
         var newCompleted: String
+        //We use variable "size" to sort grades in the cronologically descending way
         let size = names.count - 1
         for _ in names{
+            //Replaces obscure "jah" and "ei" we more clear terms
             if(completed[size-i] == "jah"){
                 newCompleted = "Korras"
             } else if (completed[size-i] == "ei"){
-                newCompleted = "Pole korras"
+                newCompleted = "Pole \nkorras"
             } else {
                 newCompleted = completed[size-i]
             }
@@ -89,20 +81,21 @@ struct LatestGradesView: View {
                 }
             }
         }.listStyle(GroupedListStyle())
-    NavBar()
+        NavBar()
     }
-    
 }
 
+//Header
 struct LatestGradesListHeader: View {
     var body: some View {
         HStack {
             Image(systemName: "star")
-            Text("Koik hinded ja arvestused")
+            Text("Kõik hinded ja arvestused")
         }
     }
 }
 
+//Footer
 struct LatestGradesListFooter: View {
     var total:String
     var KKH:String
